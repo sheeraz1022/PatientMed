@@ -79,24 +79,66 @@ export default {
       req.open("GET", './Medicines.xlsx', true);
       req.responseType = "arraybuffer";
 
-      req.onload = function(e) {
-        /* parse the data when it is received */
+      /*req.onload = function(e) {
+        //parse the data when it is received 
         var data = new Uint8Array(req.response);
         var workbook = XLSX.read(data, {type:"array"});
-        /* DO SOMETHING WITH workbook HERE */
+        // DO SOMETHING WITH workbook HERE 
         console.log(workbook);
         var i;
         for (i = 2; i< workbook.Strings.length; i+=2)
         {
-          medicines.push("Test");
-          this.medicines.push({"medicine":workbook.Strings[i], "weight":workbook.Strings[i+1]})
+         // medicines.push("Test");
+         // this.medicines.push({"medicine":workbook.Strings[i], "weight":workbook.Strings[i+1]})
           alert(workbook.Strings[i]);
           console.log(workbook.Strings[i]);
         }
 
        // console.log(workbook.Strings[1]);
-      };
+      }; */
+    var that = this;
+    req.onreadystatechange = function(){
+     if (req.readyState === 4){
+        if (req.status === 200){
+           console.log("req done successfully");
+           var data = new Uint8Array(req.response);
+        var workbook = XLSX.read(data, {type:"array"});
+        // DO SOMETHING WITH workbook HERE 
+        console.log(workbook);
+        var i;
+        for (i = 2; i< workbook.Strings.length; i+=2)
+        {
+          //medicines.push("Test");
+          //that.medicines.push("Test");
+          that.medicines.push({"medicine":workbook.Strings[i]['h'], "weight":workbook.Strings[i+1]['h']})
+          
+          //console.log(workbook.Strings[i]['h']);
+        }
+           
+        } else {
+           console.log("req failed");
+        }
+      } else {
+        console.log("xhr processing going on");
+     }
+    }
       req.send();
+     
+      //var data = new Uint8Array(req.response);
+     // var workbook = XLSX.read(data, {type:"array"});
+        // DO SOMETHING WITH workbook HERE 
+     // console.log(workbook);
+
+      //var i;
+      //  for (i = 2; i< workbook.Strings.length; i+=2)
+       // {
+         // medicines.push("Test");
+         // this.medicines.push({"medicine":workbook.Strings[i], "weight":workbook.Strings[i+1]})
+         // alert(workbook.Strings[i]);
+        //  console.log(workbook.Strings[i]);
+       // }
+
+       // console.log(workbook.Strings[1]);
     
   // workbook = XLSX.readFile('./assets/Medicines.xlsx');
  },
