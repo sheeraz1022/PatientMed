@@ -35,6 +35,7 @@
     <p>
       <input type="text" v-model="MyMedicine" placeholder="add new skill here" />
       <button v-on:click="addMedicine()" class="btn btn-primary btn-sm">Add</button>
+      <router-link :to="{ name: 'Print', params: { msg:prescriptions } }"> Print </router-link>
 	  </p>
   </div>
   </div>
@@ -79,23 +80,7 @@ export default {
       req.open("GET", './Medicines.xlsx', true);
       req.responseType = "arraybuffer";
 
-      /*req.onload = function(e) {
-        //parse the data when it is received 
-        var data = new Uint8Array(req.response);
-        var workbook = XLSX.read(data, {type:"array"});
-        // DO SOMETHING WITH workbook HERE 
-        console.log(workbook);
-        var i;
-        for (i = 2; i< workbook.Strings.length; i+=2)
-        {
-         // medicines.push("Test");
-         // this.medicines.push({"medicine":workbook.Strings[i], "weight":workbook.Strings[i+1]})
-          alert(workbook.Strings[i]);
-          console.log(workbook.Strings[i]);
-        }
-
-       // console.log(workbook.Strings[1]);
-      }; */
+     
     var that = this;
     req.onreadystatechange = function(){
      if (req.readyState === 4){

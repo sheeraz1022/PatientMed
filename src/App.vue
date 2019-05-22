@@ -1,21 +1,20 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-
-    <Patient msg="Welcome to Your Vue.js App"/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import Patient from './components/Patient.vue';
-
+import Print from './components/Print.vue'
 //if(typeof require !== 'undefined') XLSX = require('xlsx');
 //export var workbook = XLSX.readFile('./assets/Medicines.xlsx');
 
 export default {
   name: 'app',
   components: {
-    Patient
+    Patient,
+    Print
   }
 }
 </script>

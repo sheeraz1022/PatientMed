@@ -14,6 +14,7 @@
     "require": "^2.4.20",
     "vue": "^2.6.10",
     "vue-cool-select": "^2.10.2",
+    "vue-router": "^3.0.6",
     "vue-xlsx-table": "^1.2.8",
     "xlsx": "^0.14.2"
   },
