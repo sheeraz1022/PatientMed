@@ -12,28 +12,19 @@
     <b-col cols="3"> {{SelectedObj.medicine}} - <input type="text" v-model="SelectedObj.weight" />
    </b-col>
 
-    <b-col cols="3"> 
-      <b-list-group>
-       <b-list-group-item v-for="(data, index) in prescriptions" :key='index'>{{data.medicine}} - {{data.weight}}</b-list-group-item>
-     
-      </b-list-group>
-   </b-col>
-
-
-
   </b-row>
 </b-container>
 
    <div class="holder">
-     <ul>
-       <li v-for="(data, index) in medicines" :key='index'>{{index}}.{{data.medicine}} - {{data.weight}} </li>
-     </ul>
+     <b-list-group>
+       <b-list-group-item v-for="(data, index) in prescriptions" :key='index'>{{data.medicine}} - {{data.weight}}</b-list-group-item>
+     
+      </b-list-group>
     
    </div>
 
   <div>
     <p>
-      <input type="text" v-model="MyMedicine" placeholder="add new skill here" />
       <button v-on:click="addMedicine()" class="btn btn-primary btn-sm">Add</button>
       <router-link :to="{ name: 'Print', params: { msg:prescriptions } }"> Print </router-link>
 	  </p>
