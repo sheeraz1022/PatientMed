@@ -1,9 +1,9 @@
 <template>
   <div class="hello">
 
-<b-container class="bv-example-row">
+<b-container class="bv-example-row fluid">
   <b-row>
-    <b-col cols="3">
+    <b-col cols="2">
       <b-list-group>
       <b-list-group-item v-for="(data, index) in medicines" :key='index' v-on:click="fire(index)" :class="{active:index==SelectedIndex}">{{data.medicine}}</b-list-group-item>
      
@@ -12,16 +12,64 @@
     <b-col cols="3"> {{SelectedObj.medicine}} - <input type="text" v-model="SelectedObj.weight" />
    </b-col>
 
+    <b-col cols="6">
+      <b-row>
+        <div class="mx-2 holder" v-for="(data, index) in prescriptions" 
+        :key='index'>
+      <b-card
+        :title="data.medicine"
+        tag="article"
+        style="max-width: 20rem;"
+        class="mb-2"
+        
+      >
+        <b-card-text>
+          <input type="text" v-model="data.weight" />
+         {{data.weight}} 
+         
+        </b-card-text>
+
+        <!--<b-button href="#" variant="primary">Go somewhere</b-button> -->
+      </b-card>
+    </div>
+      </b-row>
+      </b-col>
+
   </b-row>
 </b-container>
 
-   <div class="holder">
+<!--  <b-container>
+  <b-row>
+    <div class="mx-2 my-4 holder" v-for="(data, index) in prescriptions" 
+        :key='index'>
+      <b-card
+        :title="data.medicine"
+        tag="article"
+        style="max-width: 20rem;"
+        class="mb-2"
+        
+      >
+        <b-card-text>
+         {{data.weight}} 
+         
+        </b-card-text>
+
+        <b-button href="#" variant="primary">Go somewhere</b-button>
+      </b-card>
+    </div>
+   
+    </b-row>
+</b-container> -->
+
+
+
+  <!-- <div class="holder">
      <b-list-group>
        <b-list-group-item v-for="(data, index) in prescriptions" :key='index'>{{data.medicine}} - {{data.weight}}</b-list-group-item>
      
       </b-list-group>
     
-   </div>
+   </div> -->
 
   <div>
     <p>
